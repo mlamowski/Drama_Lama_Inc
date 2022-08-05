@@ -36,6 +36,7 @@
           //this.vid.muted = !this.vid.muted;
           console.log(textDiv);
           //textDiv.style.display = "none";
+          document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "none";
           document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
 
         }.bind(this));
@@ -45,8 +46,9 @@
           this.vid.pause();
           console.log("lost");
           textDiv.style.visibility = 'visible';
+          document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "flex";
           document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
-
+          console.log(document.getElementsByClassName('scanning')[0].children[0]);
 
         }.bind(this));
 
@@ -67,6 +69,7 @@
 <div id="textWrapper">
   <h1 id="instruction"> Wir bereiten alles für Dich vor! </h1>
 </div>
+
 
 <a-scene  mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"  environment="preset: default;" >
   <a-assets>
