@@ -5,6 +5,7 @@
 
 #instruction {
     font-family: 'Sigmar One', cursive;
-    text-align: center ;
-    font-size: 8vh;
+    text-align: center;
+    font-size: 8vw;
+    margin: 30px;
 }
