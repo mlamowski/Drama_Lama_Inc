@@ -30,35 +30,40 @@
         console.log(marker);
 
         marker.addEventListener('targetFound', function () {
-          //this.toggle = true;
+          this.toggle = true;
           //this.vid.play();
           //this.vid.muted = !this.vid.muted;
           console.log(textDiv);
           //textDiv.style.display = "none";
           document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "none";
           document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
-          console.log(marker);
+          console.log("found");
+          console.log(this.vid);
+
 
         }.bind(this));
 
         marker.addEventListener('targetLost', function () {
           this.toggle = false;
           this.vid.pause();
-          console.log("lost");
           textDiv.style.visibility = 'visible';
           document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "flex";
           document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
-          console.log(document.getElementsByClassName('scanning')[0].children[0]);
+          console.log("lost ");
+          console.log(this.vid);
+
 
         }.bind(this));
 
+        //manchmal kommt er hier durcheinander..
         marker.addEventListener('click', function () {
-          console.log("clicked");
-          this.toggle = true;
+          //this.toggle = true;
           this.vid.play();
           this.vid.muted = false;
           textDiv.style.visibility = 'hidden';
+          console.log("clicked");
           console.log(this.vid);
+
         }.bind(this));
       },
     });
