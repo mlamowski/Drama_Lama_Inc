@@ -27,8 +27,7 @@
         var marker = this.el;
         this.vid = document.querySelector(marker.children[0].getAttribute("src"));
         let textDiv = document.getElementById('textWrapper');
-        console.log("aufgerufen");
-        //this.vid = document.querySelector("#lovers_vid");
+        console.log(marker);
 
         marker.addEventListener('targetFound', function () {
           //this.toggle = true;
@@ -38,6 +37,7 @@
           //textDiv.style.display = "none";
           document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "none";
           document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
+          console.log(marker);
 
         }.bind(this));
 
@@ -58,6 +58,7 @@
           this.vid.play();
           this.vid.muted = false;
           textDiv.style.visibility = 'hidden';
+          console.log(this.vid);
         }.bind(this));
       },
     });
