@@ -10,15 +10,16 @@
 
     document.addEventListener("DOMContentLoaded", function() {
       const sceneEl = document.querySelector('a-scene');
+      let text = document.getElementById('instruction').innerHTML
 
       //arReady event triggered when ready
       sceneEl.addEventListener("arReady", (event) => {
-      document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+        text = 'Halte Deine Kamera über die Karte';
         console.log("MindAR is ready")
       });
       // arError event triggered when something went wrong. Mostly browser compatbility issue
       sceneEl.addEventListener("arError", (event) => {
-        document.getElementById('instruction').innerHTML = 'Dein Browser scheint nicht kompatibel zu sein...';
+        text = 'Dein Browser scheint nicht kompatibel zu sein...';
       });
     });
 
@@ -36,7 +37,7 @@
           //this.vid.muted = !this.vid.muted;
           console.log(textDiv);
           //textDiv.style.display = "none";
-          textDiv.style.visibility = 'hidden';
+          text = 'Klicke auf die Karte um zu starten';
 
         }.bind(this));
 
@@ -53,6 +54,7 @@
           this.toggle = true;
           this.vid.play();
           this.vid.muted = false;
+          textDiv.style.visibility = 'hidden';
         }.bind(this));
       },
     });
