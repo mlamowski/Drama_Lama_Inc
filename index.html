@@ -51,6 +51,18 @@
             muted
             playsinline
     ></video>
+    <video
+            id="dancebear_vid"
+            src="src/videos/8359.mp4"
+            preload="auto"
+            response-type="arraybuffer"
+            loop
+            crossorigin
+            webkit-playsinline
+            autoplay
+            muted
+            playsinline
+    ></video>
   </a-assets>
 
   <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
@@ -59,6 +71,17 @@
 
     <a-video
             src="#lovers_vid"
+            scale="1 1.5 1"
+            position="0 0 0.1"
+            class="clickable"
+            gesture-handler
+    ></a-video>
+  </a-entity>
+
+  <a-entity mindar-image-target="targetIndex: 2" videohandler >
+
+    <a-video
+            src="#dancebear_vid"
             scale="1 1.5 1"
             position="0 0 0.1"
             class="clickable"
