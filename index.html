@@ -9,14 +9,14 @@
     AFRAME.registerComponent('videohandler', {
       init: function () {
         var marker = this.el;
-        this.vid = marker.children[0];
+        this.vid = document.querySelector(marker.children[0].getAttribute("src"));
         //this.vid = document.querySelector("#lovers_vid");
 
         marker.addEventListener('targetFound', function () {
           //this.toggle = true;
           //this.vid.play();
           //this.vid.muted = !this.vid.muted;
-          console.log(this.vid);
+          console.log(marker.children[0].getAttribute("src"));
         }.bind(this));
 
         marker.addEventListener('targetLost', function () {
