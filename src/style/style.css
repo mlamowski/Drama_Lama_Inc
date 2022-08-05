@@ -1,17 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
 
-#textWrapper {
 
-    position: absolute;
-    top: 12%;
-    left: 50%;
-
-    transform: translate(-50%, -50%) scale(1);
-
-}
 
 #instruction {
     font-family: 'Sigmar One', cursive;
     text-align: center ;
+    font-size: 3vw;
 }

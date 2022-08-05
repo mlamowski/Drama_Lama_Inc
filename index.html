@@ -26,7 +26,7 @@
       init: function () {
         var marker = this.el;
         this.vid = document.querySelector(marker.children[0].getAttribute("src"));
-        let text = document.querySelector('textWrapper');
+        let textDiv = document.getElementById('textWrapper');
         console.log("aufgerufen");
         //this.vid = document.querySelector("#lovers_vid");
 
@@ -34,9 +34,9 @@
           //this.toggle = true;
           //this.vid.play();
           //this.vid.muted = !this.vid.muted;
-          console.log(marker.children[0].getAttribute("src"));
-          //document.querySelector('textWrapper').style.display = "none";
-          text.style.visibility = 'hidden';
+          console.log(textDiv);
+          //textDiv.style.display = "none";
+          textDiv.style.visibility = 'hidden';
 
         }.bind(this));
 
@@ -44,7 +44,7 @@
           this.toggle = false;
           this.vid.pause();
           console.log("lost");
-          text.style.visibility = 'visible';
+          textDiv.style.visibility = 'visible';
 
         }.bind(this));
 
