@@ -1,15 +1,33 @@
 <html>
 <head>
+  <meta charset="UTF-8">
   <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
   <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const sceneEl = document.querySelector('a-scene');
+
+      //arReady event triggered when ready
+      sceneEl.addEventListener("arReady", (event) => {
+      document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+        console.log("MindAR is ready")
+      });
+      // arError event triggered when something went wrong. Mostly browser compatbility issue
+      sceneEl.addEventListener("arError", (event) => {
+        document.getElementById('instruction').innerHTML = 'Dein Browser scheint nicht kompatibel zu sein...';
+      });
+    });
+
     AFRAME.registerComponent('videohandler', {
       init: function () {
         var marker = this.el;
         this.vid = document.querySelector(marker.children[0].getAttribute("src"));
+        let text = document.querySelector('textWrapper');
+        console.log("aufgerufen");
         //this.vid = document.querySelector("#lovers_vid");
 
         marker.addEventListener('targetFound', function () {
@@ -17,16 +35,21 @@
           //this.vid.play();
           //this.vid.muted = !this.vid.muted;
           console.log(marker.children[0].getAttribute("src"));
+          //document.querySelector('textWrapper').style.display = "none";
+          text.style.visibility = 'hidden';
+
         }.bind(this));
 
         marker.addEventListener('targetLost', function () {
           this.toggle = false;
           this.vid.pause();
           console.log("lost");
+          text.style.visibility = 'visible';
 
         }.bind(this));
 
         marker.addEventListener('click', function () {
+          console.log("clicked");
           this.toggle = true;
           this.vid.play();
           this.vid.muted = false;
@@ -36,6 +59,11 @@
   </script>
 </head>
 <body>
+<link rel="stylesheet" type="text/css" href="src/style/style.css" media="screen" />
+
+<div id="textWrapper">
+  <h1 id="instruction"> Wir bereiten alles für Dich vor! </h1>
+</div>
 
 <a-scene  mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"  environment="preset: default;" >
   <a-assets>
