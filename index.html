@@ -51,11 +51,14 @@
           document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
           console.log("lost ");
           console.log(this.vid);
+          //geht nicht
+          document.getElementById("sign").style.visibility = 'visible';
+
 
 
         }.bind(this));
 
-        //manchmal kommt er hier durcheinander.. vllt kann man video erst setzen, wenn target gefunden?
+        //manchmal kommt er hier durcheinander.. vllt kann man this.video erst setzen, wenn target gefunden?
         marker.addEventListener('click', function () {
           //this.toggle = true;
           this.vid.play();
@@ -63,6 +66,8 @@
           textDiv.style.visibility = 'hidden';
           console.log("clicked");
           console.log(this.vid);
+          //geht nicht
+          document.getElementById("sign").style.display = "none";
 
         }.bind(this));
       },
@@ -79,6 +84,7 @@
 
 <a-scene  mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"  environment="preset: default;" >
   <a-assets>
+    <img id="playSign"  material="alphaTest: 1" src="src/images/play_arrow_FILL0_wght400_GRAD0_opsz48.svg" />
     <video
             id="lovers_vid"
             src="src/videos/8406A.mp4"
@@ -116,6 +122,8 @@
             class="clickable"
             gesture-handler
     ></a-video>
+
+    <a-image id="sign" src="#playSign" position="0 0 0.2" ></a-image>
   </a-entity>
 
   <a-entity mindar-image-target="targetIndex: 2" videohandler >
