@@ -28,6 +28,12 @@
         this.vid = document.querySelector(marker.children[0].getAttribute("src"));
         let textDiv = document.getElementById('textWrapper');
         console.log(marker);
+        var img = document.createElement('a-image');
+        img.setAttribute('src', '#playSign');
+        img.setAttribute('position', '0 0 0.2');
+        img.setAttribute('id', 'sign');
+
+        marker.appendChild(img);
 
         marker.addEventListener('targetFound', function () {
           this.toggle = true;
@@ -39,6 +45,8 @@
           document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
           console.log("found");
           console.log(this.vid);
+          img.setAttribute("visible",true);
+
 
 
         }.bind(this));
@@ -51,8 +59,6 @@
           document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
           console.log("lost ");
           console.log(this.vid);
-          //geht nicht
-          document.getElementById("sign").style.visibility = 'visible';
 
 
 
@@ -67,7 +73,7 @@
           console.log("clicked");
           console.log(this.vid);
           //geht nicht
-          document.getElementById("sign").style.display = "none";
+          img.setAttribute("visible",false);
 
         }.bind(this));
       },
@@ -122,8 +128,6 @@
             class="clickable"
             gesture-handler
     ></a-video>
-
-    <a-image id="sign" src="#playSign" position="0 0 0.2" ></a-image>
   </a-entity>
 
   <a-entity mindar-image-target="targetIndex: 2" videohandler >
