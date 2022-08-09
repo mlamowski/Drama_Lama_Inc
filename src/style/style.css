@@ -6,9 +6,26 @@
 #instruction {
     font-family: 'Sigmar One', cursive;
     text-align: center;
-    font-size: 8vw;
+    font-size: 2vw;
     margin: 30px;
     color: #ffffff;
     opacity: 0.8;
+}
+
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3) {
+    #instruction {
+        font-size: 8vw;
+    }
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    #instruction {
+        font-size: 6vw;
+    }
 }
 
