@@ -31,6 +31,7 @@
         var img = document.createElement('a-image');
         img.setAttribute('src', '#playSign');
         img.setAttribute('position', '0 0 0.2');
+        img.setAttribute('scale', '0.5 0.5 1');
         marker.appendChild(img);
 
         marker.addEventListener('targetFound', function () {
@@ -80,7 +81,7 @@
 </head>
 <body>
 <link rel="stylesheet" type="text/css" href="src/style/style.css" media="screen" />
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <div id="textWrapper">
   <h1 id="instruction"> Wir bereiten alles für Dich vor! </h1>
 </div>
@@ -88,7 +89,7 @@
 
 <a-scene  mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"  environment="preset: default;" >
   <a-assets>
-    <img id="playSign"  material="alphaTest: 1" src="src/images/play_arrow_FILL0_wght400_GRAD0_opsz48.svg" />
+    <img id="playSign"  material="alphaTest: 1" src="src/images/play_arrow.svg" />
     <video
             id="lovers_vid"
             src="src/videos/8406A.mp4"
