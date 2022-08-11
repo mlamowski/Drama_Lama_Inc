@@ -6,78 +6,8 @@
 
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
-  <script>
+  <script type="text/javascript" src="./src/main.js"></script>
 
-    document.addEventListener("DOMContentLoaded", function() {
-      const sceneEl = document.querySelector('a-scene');
-
-      //arReady event triggered when ready
-      sceneEl.addEventListener("arReady", (event) => {
-        document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
-        console.log("MindAR is ready")
-      });
-      // arError event triggered when something went wrong. Mostly browser compatbility issue
-      sceneEl.addEventListener("arError", (event) => {
-        document.getElementById('instruction').innerHTML = 'Dein Browser scheint nicht kompatibel zu sein...';
-      });
-    });
-
-    AFRAME.registerComponent('videohandler', {
-      init: function () {
-        var marker = this.el;
-        this.vid = document.querySelector(marker.children[0].getAttribute("src"));
-        let textDiv = document.getElementById('textWrapper');
-        console.log(marker);
-        var img = document.createElement('a-image');
-        img.setAttribute('src', '#playSign');
-        img.setAttribute('position', '0 0 0.2');
-        img.setAttribute('scale', '0.5 0.5 1');
-        marker.appendChild(img);
-
-        marker.addEventListener('targetFound', function () {
-          this.toggle = true;
-          //this.vid.play();
-          //this.vid.muted = !this.vid.muted;
-          console.log(textDiv);
-          //textDiv.style.display = "none";
-          document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "none";
-          document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
-          console.log("found");
-          console.log(this.vid);
-          img.setAttribute("visible",true);
-
-
-
-        }.bind(this));
-
-        marker.addEventListener('targetLost', function () {
-          this.toggle = false;
-          this.vid.pause();
-          textDiv.style.visibility = 'visible';
-          document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "flex";
-          document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
-          console.log("lost ");
-          console.log(this.vid);
-
-
-
-        }.bind(this));
-
-        //manchmal kommt er hier durcheinander.. vllt kann man this.video erst setzen, wenn target gefunden?
-        marker.addEventListener('click', function () {
-          //this.toggle = true;
-          this.vid.play();
-          this.vid.muted = false;
-          textDiv.style.visibility = 'hidden';
-          console.log("clicked");
-          console.log(this.vid);
-          //geht nicht
-          img.setAttribute("visible",false);
-
-        }.bind(this));
-      },
-    });
-  </script>
 </head>
 <body>
 <link rel="stylesheet" type="text/css" href="src/style/style.css" media="screen" />
@@ -89,7 +19,11 @@
 
 <a-scene  mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"  environment="preset: default;" >
   <a-assets>
+
+    <!-- IMAGES -->
     <img id="playSign"  material="alphaTest: 1" src="src/images/play_arrow.svg" />
+
+    <!-- VIDEOS -->
     <video
             id="lovers_vid"
             src="src/videos/8406A.mp4"
@@ -114,11 +48,15 @@
             muted
             playsinline
     ></video>
+
+    <!-- GLTF -->
+    <a-asset-item id="confetti" src="src/models/imported_mp4_ballon_2.gltf"></a-asset-item>
+
   </a-assets>
 
   <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
 
-  <a-entity mindar-image-target="targetIndex: 1" videohandler >
+  <a-entity id="target1" mindar-image-target="targetIndex: 1" videohandler >
 
     <a-video
             src="#lovers_vid"
@@ -127,10 +65,17 @@
             class="clickable"
             gesture-handler
     ></a-video>
+
+    <a-gltf-model
+            src="#confetti"
+            rotation="0 0 0"
+            position="-0.2 0.15 0.3"
+            animation-mixer="clip: *"
+    ></a-gltf-model>
+
   </a-entity>
 
   <a-entity mindar-image-target="targetIndex: 2" videohandler >
-
     <a-video
             src="#dancebear_vid"
             scale="1 1.5 1"
@@ -139,6 +84,7 @@
             gesture-handler
     ></a-video>
   </a-entity>
+
 
 </a-scene>
 

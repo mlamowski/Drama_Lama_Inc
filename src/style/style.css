@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
 
 
+/* Desktop */
 
 #instruction {
     font-family: 'Sigmar One', cursive;
@@ -12,20 +13,28 @@
     opacity: 0.8;
 }
 
+
+/* Mobile */
+
 @media only screen
-and (min-device-width: 375px)
-and (max-device-width: 812px)
-and (-webkit-min-device-pixel-ratio: 3) {
+and (max-device-width: 1080px) {
     #instruction {
         font-size: 8vw;
     }
 }
 
+/* Tablet
 
+@media only screen and (min-width: 540px) and (max-width: 768px) {
+    #instruction {
+        font-size: 5vw;
+    }
+}
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
     #instruction {
         font-size: 6vw;
     }
 }
 
+/*
