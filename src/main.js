@@ -25,6 +25,8 @@ AFRAME.registerComponent('videohandler', {
     img.setAttribute('position', '0 0 0.2');
     img.setAttribute('scale', '0.5 0.5 1');
     marker.appendChild(img);
+    
+    console.log(this.entitiy_model.getAttribute('animation-mixer'));
 
     marker.addEventListener('targetFound', function () {
       console.log("found ");
@@ -78,8 +80,9 @@ AFRAME.registerComponent('videohandler', {
       this.vid.muted = false;
       textDiv.style.visibility = 'hidden';
       console.log("clicked");
-      /*
+      
       img.setAttribute("visible",false);
+      /*
       this.entitiy_model.setAttribute('animation-mixer', {
         clip: '*'
       })
