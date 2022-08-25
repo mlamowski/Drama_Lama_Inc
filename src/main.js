@@ -39,12 +39,12 @@ AFRAME.registerComponent('videohandler', {
       document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
 
       img.setAttribute("visible",true);
-      /*
+
       this.entitiy_model.setAttribute('animation-mixer', {
         clip: 'null'
       })
 
-       */
+
 
       this.entitiy_model.pause();
 
@@ -63,12 +63,12 @@ AFRAME.registerComponent('videohandler', {
       document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "flex";
       document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
       console.log("lost ");
-      /*
+
       this.entitiy_model.setAttribute('animation-mixer', {
         clip: 'null'
       })
 
-       */
+
       this.entitiy_model.pause();
 
     }.bind(this));
@@ -82,12 +82,12 @@ AFRAME.registerComponent('videohandler', {
       console.log("clicked");
       
       img.setAttribute("visible",false);
-      /*
+
       this.entitiy_model.setAttribute('animation-mixer', {
         clip: '*'
       })
 
-       */
+
       this.entitiy_model.play();
 
 
