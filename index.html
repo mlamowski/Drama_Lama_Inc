@@ -37,6 +37,18 @@
             playsinline
     ></video>
     <video
+            id="ballon_vid"
+            src="src/videos/0002.mp4"
+            preload="auto"
+            response-type="arraybuffer"
+            loop
+            crossorigin
+            webkit-playsinline
+            autoplay
+            muted
+            playsinline
+    ></video>
+    <video
             id="dancebear_vid"
             src="src/videos/8359.mp4"
             preload="auto"
@@ -60,6 +72,27 @@
 
     <a-video
             src="#family_vid"
+            scale="1 1.5 1"
+            position="0 0 0.1"
+            class="clickable"
+            gesture-handler
+    ></a-video>
+
+    <a-gltf-model
+            src="#music"
+            rotation="0 0 0"
+            position="0 0 0"
+            animation-mixer="clip: *"
+    ></a-gltf-model>
+    <!-- vllt einfach mit timescale regeln, klappt aber jz erstmal so.
+    animation-mixer="timeScale: 0"
+    -->
+  </a-entity>
+
+  <a-entity id="target2" mindar-image-target="targetIndex: 1" videohandler >
+
+    <a-video
+            src="#ballon_vid"
             scale="1 1.5 1"
             position="0 0 0.1"
             class="clickable"
