@@ -6,7 +6,7 @@
 
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
-  <script type="text/javascript" src="./src/main.js"></script>
+  <script type="text/javascript" src="./src/mainTest.js"></script>
 
 </head>
 <body>
@@ -63,12 +63,14 @@
 
     <!-- GLTF -->
     <a-asset-item id="music" src="src/models/0001.gltf"></a-asset-item>
+    <a-asset-item id="confetti" src="src/models/0002a.gltf"></a-asset-item>
 
   </a-assets>
 
   <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
 
   <a-entity id="target1" mindar-image-target="targetIndex: 0" videohandler >
+
 
     <a-video
             src="#family_vid"
@@ -84,12 +86,20 @@
             position="0 0 0"
             animation-mixer="clip: *"
     ></a-gltf-model>
+
+    <a-image
+            src="#playSign"
+            position="0 0 0.2"
+            id="playSign1"
+            scale="0.5 0.5 1"
+    ></a-image>
     <!-- vllt einfach mit timescale regeln, klappt aber jz erstmal so.
     animation-mixer="timeScale: 0"
     -->
   </a-entity>
 
   <a-entity id="target2" mindar-image-target="targetIndex: 1" videohandler >
+
 
     <a-video
             src="#ballon_vid"
@@ -100,11 +110,17 @@
     ></a-video>
 
     <a-gltf-model
-            src="#music"
+            src="#confetti"
             rotation="0 0 0"
-            position="0 0 0"
+            position="0 0 0.1"
             animation-mixer="clip: *"
     ></a-gltf-model>
+    <a-image
+            src="#playSign"
+            position="0 0 0.2"
+            id="playSign2"
+            scale="0.5 0.5 1"
+    ></a-image>
     <!-- vllt einfach mit timescale regeln, klappt aber jz erstmal so.
     animation-mixer="timeScale: 0"
     -->
