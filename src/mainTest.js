@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function() {
   //arReady event triggered when ready
   sceneEl.addEventListener("arReady", (event) => {
     if(firefoxAgent) {
-      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
-
-    } else {
-      document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+      alert("Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!");
     }
+
+    document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+
 
 
   });
@@ -44,14 +44,9 @@ document.addEventListener("DOMContentLoaded", function() {
     this.toggle = true;
     document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "none";
 
-    if(firefoxAgent) {
-      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
 
-    } else {
-      document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
 
-    }
-
+    document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
     this.entitiy_model.setAttribute('animation-mixer', {
       clip: 'null'
     })
@@ -86,12 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     textDiv.style.visibility = 'visible';
     document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "flex";
-    if(firefoxAgent) {
-      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
-
-    } else {
-      document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
-    }
+    document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
     console.log("lost ");
 
     this.entitiy_model.setAttribute('animation-mixer', {
@@ -114,13 +104,8 @@ document.addEventListener("DOMContentLoaded", function() {
     this.entitiy_model = element2.children[1];
     this.toggle = true;
     document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "none";
-    if(firefoxAgent) {
-      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
+    document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
 
-    } else {
-      document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
-
-    }
     this.entitiy_model.setAttribute('animation-mixer', {
       clip: 'null'
     })
@@ -160,12 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
     this.vid.pause();
     textDiv.style.visibility = 'visible';
     document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "flex";
-    if(firefoxAgent) {
-      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
-
-    } else {
-      document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
-    }
+    document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
     console.log("lost ");
 
     this.entitiy_model.setAttribute('animation-mixer', {
