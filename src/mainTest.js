@@ -1,18 +1,27 @@
 
 document.addEventListener("DOMContentLoaded", function() {
   const sceneEl = document.querySelector('a-scene');
-  
-  
+
   const element1 = document.getElementById("target1")
   const element2 = document.getElementById("target2")
   let textDiv = document.getElementById('textWrapper');
 
-  let playSign1 = document.getElementById("playSign1")
-  let playSign2 = document.getElementById("playSign2")
+  let playSign = document.getElementsByClassName("playSign");
+
+  let userAgentString = navigator.userAgent;
+  let firefoxAgent = userAgentString.indexOf("Firefox") > -1;
+
+
   
   //arReady event triggered when ready
   sceneEl.addEventListener("arReady", (event) => {
-    document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+    if(firefoxAgent) {
+      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
+
+    } else {
+      document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+    }
+
 
   });
   // arError event triggered when something went wrong. Mostly browser compatbility issue
@@ -21,7 +30,15 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   element1.addEventListener('targetFound', function () {
-    playSign1.setAttribute("visible",true);
+    playSign[0].setAttribute("visible",true);
+    playSign[1].setAttribute("visible",true);
+
+    //this.startSign = document.querySelector(element1.children[2].getAttribute("src"));
+    //console.log(this.startSign);
+    //this.startSign.style.visibility = 'hidden';
+
+    //this.startSign.setAttribute("visible",true);
+
     this.vid = document.querySelector(element1.children[0].getAttribute("src"));
     this.entitiy_model = element1.children[1];
     this.toggle = true;
@@ -33,7 +50,9 @@ document.addEventListener("DOMContentLoaded", function() {
     this.entitiy_model.pause();
 
     element1.addEventListener('click', function () {
-      playSign1.setAttribute("visible","false");
+      playSign[0].setAttribute("visible","false");
+      playSign[1].setAttribute("visible","false");
+
       this.vid.play();
       this.vid.muted = false;
       textDiv.style.visibility = 'hidden';
@@ -49,7 +68,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }.bind(this));
   
   element1.addEventListener('targetLost', function () {
-    playSign1.setAttribute("visible",true);
+    playSign[0].setAttribute("visible",true);
+    playSign[1].setAttribute("visible",true);
+
 
     this.toggle = false;
     this.vid.pause();
@@ -73,7 +94,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   element2.addEventListener('targetFound', function () {
-    playSign2.setAttribute("visible",true);
+    playSign[0].setAttribute("visible",true);
+    playSign[1].setAttribute("visible",true);
+
     this.vid = document.querySelector(element2.children[0].getAttribute("src"));
     this.entitiy_model = element2.children[1];
     this.toggle = true;
@@ -90,7 +113,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     element2.addEventListener('click', function () {
 
-      playSign2.setAttribute("visible","false");
+      playSign[0].setAttribute("visible","false");
+      playSign[1].setAttribute("visible","false");
+
 
       this.vid.play();
       this.vid.muted = false;
@@ -110,7 +135,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }.bind(this));
 
   element2.addEventListener('targetLost', function () {
-    playSign2.setAttribute("visible",true);
+    playSign[0].setAttribute("visible",true);
+    playSign[1].setAttribute("visible",true);
+
     this.toggle = false;
     this.vid.pause();
     textDiv.style.visibility = 'visible';
