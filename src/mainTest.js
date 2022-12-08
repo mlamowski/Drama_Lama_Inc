@@ -43,7 +43,15 @@ document.addEventListener("DOMContentLoaded", function() {
     this.entitiy_model = element1.children[1];
     this.toggle = true;
     document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "none";
-    document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
+
+    if(firefoxAgent) {
+      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
+
+    } else {
+      document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
+
+    }
+
     this.entitiy_model.setAttribute('animation-mixer', {
       clip: 'null'
     })
@@ -78,7 +86,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     textDiv.style.visibility = 'visible';
     document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "flex";
-    document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+    if(firefoxAgent) {
+      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
+
+    } else {
+      document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+    }
     console.log("lost ");
 
     this.entitiy_model.setAttribute('animation-mixer', {
@@ -101,8 +114,13 @@ document.addEventListener("DOMContentLoaded", function() {
     this.entitiy_model = element2.children[1];
     this.toggle = true;
     document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "none";
-    document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
+    if(firefoxAgent) {
+      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
 
+    } else {
+      document.getElementById('instruction').innerHTML = 'Klicke auf die Karte um zu Starten';
+
+    }
     this.entitiy_model.setAttribute('animation-mixer', {
       clip: 'null'
     })
@@ -142,7 +160,12 @@ document.addEventListener("DOMContentLoaded", function() {
     this.vid.pause();
     textDiv.style.visibility = 'visible';
     document.getElementsByClassName("mindar-ui-overlay mindar-ui-scanning")[0].style.display = "flex";
-    document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+    if(firefoxAgent) {
+      document.getElementById('instruction').innerHTML = 'Bitte nutze einen anderen Browser, Firefox wird nicht unterstützt!';
+
+    } else {
+      document.getElementById('instruction').innerHTML = 'Halte Deine Kamera über die Karte';
+    }
     console.log("lost ");
 
     this.entitiy_model.setAttribute('animation-mixer', {
